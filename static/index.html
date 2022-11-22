@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>채팅</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/index.js"></script>
+</head>
+<body>
+<div id="main">
+    <div id="chat">
+        <!-- 채팅 메시지 영역 -->
+    </div>
+    <div>
+        <div id="test" contenteditable="true" placeholder="메시지를 입력해주세요." onkeyup="enterkey(); return false;">
+        </div>
+        <button class="btnSend" onclick="send()">전송</button>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</body>
+</html>

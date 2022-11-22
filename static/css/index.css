@@ -1,0 +1,81 @@
+#main {
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 20px;
+    background-color: white;
+    text-align: center;
+    width: 400px;
+    height: 300px;
+    font-family: HY엽서L;
+}
+
+#chat {
+    height: 400px;
+    width: 100%;
+    overflow-y: auto;
+    border-radius: 10px 10px 0px 0px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-bottom: 0;
+}
+
+#test {
+    height: 100px;
+    width: 100%;
+    overflow-y: auto;
+    background-color: #f5f8fa;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0px 0px 10px 10px;
+    border-color: gray;
+}
+
+.connect {
+    width: 90%;
+    margin: auto;
+    background-color: #e3f2f9;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.disconnect {
+    width: 90%;
+    margin: auto;
+    background-color: indianred;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.me {
+    width: 50%;
+    margin: auto;
+    margin-right: 20px;
+    background-color: lemonchiffon;
+    border-radius: 5px;
+    margin-top: 10px;
+    float: right;
+}
+
+.other {
+    width: 90%;
+    margin: auto;
+    margin-left: 20px;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    float: left;
+}
+
+.btnSend {
+    background-color: lightgray;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    border: 0;
+    width: 50%;
+    height: 50px;
+    margin-top: 10px;
+}
