@@ -14,6 +14,7 @@ socket.on('update', function(data) {
     let chat = document.getElementById('chat')
 
     let message = document.createElement('div')
+
     let node = document.createTextNode(`${data.name}: ${data.message}`)
     let className = ''
 
@@ -34,13 +35,11 @@ socket.on('update', function(data) {
     message.classList.add(className)
     message.appendChild(node)
     chat.appendChild(message)
+    $('#chat').scrollTop($('#chat')[0].scrollHeight);
 })
 
 function send() {
     let message = document.getElementById('test').innerText
-
-    // let message = $("#test").attr("value");
-    console.log(message);
 
     document.getElementById('test').innerText = ''
 
@@ -60,7 +59,6 @@ function enterkey() {
         send();
     }
     let length = document.getElementById('test').innerText.length;
-    console.log('length = ' + length);
     if (length > 0) {
         $(".btnSend").css('background-color', '#3395ff');
     } else {

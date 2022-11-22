@@ -39,8 +39,6 @@ io.sockets.on('connection', function(socket) {
   socket.on('message', function(data) {
     data.name = socket.name
 
-    console.log(data)
-
     socket.broadcast.emit('update', data);
 
   })
