@@ -2,10 +2,8 @@
     margin: auto;
     margin-top: 100px;
     border-radius: 20px;
-    background-color: white;
     text-align: center;
     width: 400px;
-    height: 300px;
     font-family: HY엽서L;
 }
 
@@ -22,7 +20,7 @@
     padding-bottom: 10px;
 }
 
-#test {
+#text {
     height: 100px;
     width: 100%;
     overflow-y: auto;
@@ -32,6 +30,16 @@
     border-radius: 0px 0px 10px 10px;
     border-color: gray;
     padding-top: 10px;
+}
+
+#select-room {
+    width: 70%;
+    height: 30px;
+    border-radius: 10px;
+}
+
+#room {
+    background-color: #f3efeb;
 }
 
 .connect {
@@ -96,4 +104,36 @@
     width: 50%;
     height: 50px;
     margin-top: 10px;
+}
+
+.btnRoom {
+    background-color: #51149255;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    border: 0;
+    width: 20%;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+* {
+    user-select: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+html,
+body {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 100px;
+    margin: 0;
+    background-color: #f3efeb;
 }

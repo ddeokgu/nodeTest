@@ -1,14 +1,14 @@
 var socket = io();
 
 socket.on('connect', function() {
-    let name = prompt('반갑습니다!', '')
+   /*let name = prompt('이름을 입력해 주세요.', '');
 
     if(!name) {
         name = '익명'
-    }
+    }*/
 
-    socket.emit('newUser', name)
-})
+});
+
 
 socket.on('update', function(data) {
     let chat = document.getElementById('chat')
@@ -16,6 +16,7 @@ socket.on('update', function(data) {
     let message = document.createElement('div')
 
     let node = document.createTextNode(`${data.name}: ${data.message}`)
+
     let className = ''
 
     switch(data.type) {
@@ -36,37 +37,50 @@ socket.on('update', function(data) {
     message.appendChild(node)
     chat.appendChild(message)
     $('#chat').scrollTop($('#chat')[0].scrollHeight);
-})
+});
 
 function send() {
-    let message = document.getElementById('test').innerText
 
-    document.getElementById('test').innerText = ''
+    let message = document.getElementById('text').innerText
+    let room = $("#select-room").prop('selected', true).val();
+    let name = $("#hiddenName").val();
 
-    let chat = document.getElementById('chat')
-    let msg = document.createElement('div')
-    let node = document.createTextNode(message)
-    msg.classList.add('me')
-    msg.appendChild(node)
-    chat.appendChild(msg)
+    if(room === 'none') {
+        return alert("방을 선택해 주세요.");
+    }
 
-    socket.emit('message', {type: 'message', message: message})
+    document.getElementById('text').innerText = '';
+
+    let chat = document.getElementById('chat');
+    let msg = document.createElement('div');
+    let node = document.createTextNode(message);
+    msg.classList.add('me');
+    msg.appendChild(node);
+    chat.appendChild(msg);
+
+    socket.emit('message', {type: 'message', message: message, room : room, name : name});
     $('#chat').scrollTop($('#chat')[0].scrollHeight);
+}
+
+function roomSelect() {
+    let roomName = $("#select-room").val();
+    if(roomName === 'none') {
+        return alert('방을 선택해주세요.')
+    } else {
+        socket.emit('joinRoom', roomName);
+    }
 }
 
 function enterkey() {
     if (window.event.keyCode == 13) {
         send();
     }
-    let length = document.getElementById('test').innerText.length;
+    let length = document.getElementById('text').innerText.length;
     if (length > 0) {
-        $(".btnSend").css('background-color', '#3395ff');
+        $(".btnSend").css('background-color', '#91b9e5');
     } else {
         $(".btnSend").css('background-color', 'lightgray');
     }
 
 }
-
-
-
 

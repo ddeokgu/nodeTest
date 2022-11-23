@@ -7,19 +7,37 @@
     <link rel="stylesheet" href="/css/index.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 <div id="main">
+    <input type="hidden" id="hiddenName">
+    <div id="room">
+        <select id="select-room">
+            <option value="none" selected="selected">방을 선택해 주세요.</option>
+            <option value="test-room">개발팀</option>
+            <option value="test-room2">디자인팀</option>
+            <option value="test-room3">서비스기획팀</option>
+            <option value="test-room4">스마사업팀</option>
+        </select>
+        <button class="btnRoom" id="select-room-button" onclick="roomSelect();">SELECT</button>
+    </div>
     <div id="chat">
         <!-- 채팅 메시지 영역 -->
     </div>
     <div>
-        <div id="test" contenteditable="true" placeholder="메시지를 입력해주세요." onkeyup="enterkey(); return false;">
+        <div id="text" contenteditable="true" placeholder="메시지를 입력해주세요." onkeyup="enterkey(); return false;">
 
         </div>
-        <button class="btnSend" onclick="send()">전송</button>
+        <button class="btnSend" onclick="send()">SEND</button>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 </body>
+<script>
+    $(document).ready(function (){
+        let name = prompt("이름을 입력해 주세요.", "");
+        $("#hiddenName").val(name);
+    });
+</script>
 </html>
