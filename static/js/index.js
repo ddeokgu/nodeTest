@@ -15,7 +15,7 @@ socket.on('update', function(data) {
 
     let message = document.createElement('div')
 
-    let node = document.createTextNode(`${data.name}: ${data.message}`)
+    let node = document.createTextNode(`${data.name}: ${data.message}`);
 
     let className = ''
 
@@ -36,6 +36,7 @@ socket.on('update', function(data) {
     message.classList.add(className)
     message.appendChild(node)
     chat.appendChild(message)
+
     $('#chat').scrollTop($('#chat')[0].scrollHeight);
 });
 
@@ -50,6 +51,8 @@ function send() {
     }
 
     document.getElementById('text').innerText = '';
+
+    $('.btnSend').removeClass('btnOn');
 
     let chat = document.getElementById('chat');
     let msg = document.createElement('div');
@@ -72,15 +75,26 @@ function roomSelect() {
 }
 
 function enterkey() {
-    if (window.event.keyCode == 13) {
-        send();
-    }
     let length = document.getElementById('text').innerText.length;
+        console.log(length);
+        console.log('text = ' + document.querySelector("#text").innerText);
+    if (window.event.keyCode == 13) {
+        if (document.querySelector("#text").innerText == '' || document.querySelector("#text").innerText == ' ' ) {
+            return false;
+        }
+            send();
+        };
     if (length > 0) {
-        $(".btnSend").css('background-color', '#91b9e5');
+        // $(".btnSend").css('background-color', '#91b9e5');
+        $(".btnSend").addClass('btnOn');
     } else {
-        $(".btnSend").css('background-color', 'lightgray');
+        // $(".btnSend").css('background-color', 'lightgray');
+        $(".btnSend").removeClass('btnOn');
     }
 
+}
+
+function goUp() {
+    $("#chat").animate({scrollTop :0}, 800);
 }
 

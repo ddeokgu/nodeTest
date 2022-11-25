@@ -16,6 +16,7 @@ let rooms = [];
 
 app.use('/css', express.static('./static/css'));
 app.use('/js', express.static('./static/js'));
+app.use('/img', express.static('./static/images'));
 
 app.get('/', function(request, response) {
   fs.readFile('./static/index.html', function(err, data) {
@@ -32,16 +33,34 @@ app.get('/', function(request, response) {
 io.on('connection', function(socket) {
 
   socket.on('joinRoom', async(msg) => {
-    let roomName = 'Room_' + msg;
-    if(!rooms.includes(roomName)) {
-      rooms.push(roomName)
+    let roomCode = 'Room_' + msg;
+    if(!rooms.includes(roomCode)) {
+      rooms.push(roomCode)
     } else {
 
     }
+    
+    let roomName;
 
-    socket.join(roomName);
+    if (roomCode.includes("dev")) {
+      roomName = "개발팀";
+    }
+    if (roomCode.includes("des")) {
+      roomName = "디자인팀";
+    }
+    if (roomCode.includes("ser")) {
+      roomName = "서비스기획팀";
+    }
+    if (roomCode.includes("sma")) {
+      roomName = "스마트사업팀";
+    }
+    if (roomCode.includes("acc")) {
+      roomName = "회계팀";
+    }
 
-    io.to(roomName).emit('update', {type: 'connect', name: 'SERVER', message: '방에 접속하였습니다.'});
+    socket.join(roomCode);
+
+    io.to(roomCode).emit('update', {type: 'connect', name: 'SERVER', message: roomName+'방에 접속하였습니다.'});
 
     // socket.name = name;
     // io.sockets.emit('update', {type: 'connect', name: 'SERVER', message: name + '님이 접속하였습니다.'});
@@ -69,7 +88,6 @@ server.listen(8080, function() {
 function getUserCurrentRoom(socket){
   let currentRoom = '';
   let socketRooms = rooms;
-  console.log('socketRooms = ' + socketRooms);
 
   for( let i = 0 ; i < socketRooms.length; i ++ ){
     if(socketRooms[i].indexOf('Room_') !== -1){

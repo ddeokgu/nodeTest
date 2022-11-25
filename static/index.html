@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,27 +14,32 @@
     <div id="room">
         <select id="select-room">
             <option value="none" selected="selected">방을 선택해 주세요.</option>
-            <option value="test-room">개발팀</option>
-            <option value="test-room2">디자인팀</option>
-            <option value="test-room3">서비스기획팀</option>
-            <option value="test-room4">스마사업팀</option>
+            <option value="dev">개발팀</option>
+            <option value="des">디자인팀</option>
+            <option value="ser">서비스기획팀</option>
+            <option value="sma">스마사업팀</option>
+            <option value="acc">회계팀</option>
         </select>
         <button class="btnRoom" id="select-room-button" onclick="roomSelect();">SELECT</button>
     </div>
-    <div id="chat">
+    <div class="scrollBar" id="chat">
         <!-- 채팅 메시지 영역 -->
+        <input class="btnArrowTop" type="image" src="img/btnArrowTop.png" onclick="goUp(); return false;"/>
     </div>
-    <div>
-        <div id="text" contenteditable="true" placeholder="메시지를 입력해주세요." onkeyup="enterkey(); return false;">
-
+    <div class="div_top">
+        <div class="div_text">
+            <div class="hideScroll" id="text" contenteditable="true" placeholder="메시지를 입력해주세요." onkeyup="enterkey(); return false;">
+            </div>
+            <div class="div_btn">
+                <button class="btnSend" onclick="send()">SEND</button>
+            </div>
         </div>
-        <button class="btnSend" onclick="send()">SEND</button>
     </div>
 </div>
 
 </body>
 <script>
-    $(document).ready(function (){
+    $(document).ready(function () {
         let name = prompt("이름을 입력해 주세요.", "");
         $("#hiddenName").val(name);
     });

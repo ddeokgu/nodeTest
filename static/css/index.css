@@ -5,6 +5,7 @@
     text-align: center;
     width: 400px;
     font-family: HY엽서L;
+
 }
 
 #chat {
@@ -13,29 +14,41 @@
     overflow-y: auto;
     border-radius: 10px 10px 0px 0px;
     background-color: white;
-    border-style: solid;
     border-width: 1px;
     border-color: gray;
     border-bottom: 0;
     padding-bottom: 10px;
+    position: relative;
 }
 
 #text {
+    width: 80%;
+    overflow-y: auto;
+    float: left;
+}
+
+.div_text {
     height: 100px;
     width: 100%;
     overflow-y: auto;
     background-color: #f5f8fa;
-    border-style: solid;
     border-width: 1px;
     border-radius: 0px 0px 10px 10px;
     border-color: gray;
     padding-top: 10px;
+    display: flex;
+}
+
+.div_btn {
+    float: right;
+    display: flex;
 }
 
 #select-room {
     width: 70%;
     height: 30px;
     border-radius: 10px;
+    border-style: hidden;
 }
 
 #room {
@@ -43,12 +56,6 @@
 }
 
 .connect {
-/*    width: 90%;
-    margin: auto;
-    background-color: #e3f2f9;
-    border-radius: 5px;
-    text-align: center;
-    margin-top: 10px;*/
     width: 90%;
     margin: auto;
     margin-left: 20px;
@@ -59,11 +66,6 @@
 }
 
 .disconnect {
- /*   width: 50%;
-    margin: auto;
-    background-color: indianred;
-    text-align: center;
-    margin-top: 10px;*/
     width: 90%;
     margin: auto;
     margin-left: 20px;
@@ -96,14 +98,14 @@
 }
 
 .btnSend {
-    background-color: lightgray;
     border-radius: 5px;
     text-align: center;
     color: #ffffff;
     border: 0;
-    width: 50%;
     height: 50px;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: lightgray;
 }
 
 .btnRoom {
@@ -117,6 +119,15 @@
     margin-bottom: 10px;
 }
 
+.btnArrowTop {
+    float: right;
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    margin-top: 360px;
+    padding-left: 150px;
+}
+
 * {
     user-select: none;
 }
@@ -127,7 +138,6 @@
 
 html,
 body {
-    height: 100%;
     min-height: 100%;
 }
 
@@ -137,3 +147,46 @@ body {
     margin: 0;
     background-color: #f3efeb;
 }
+
+.btnOn {
+   background-color: #91b9e5;
+}
+
+.btnOff {
+   background-color: lightgray;
+}
+
+
+/***********************************스크롤***************************************/
+/* 임의의 영역 생성 */
+.scrollBar {
+    width: 200px;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+/* 아래의 모든 코드는 영역::코드로 사용 */
+.scrollBar::-webkit-scrollbar {
+    width: 10px;  /* 스크롤바의 너비 */
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #c6daf5; /* 스크롤바의 색상 */
+
+    border-radius: 10px;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
+.hideScroll {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.hideScroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+/***********************************스크롤 끝***************************************/
